@@ -94,7 +94,6 @@ void sortFile(std::string fileName) {
   std::string line;
 
   int a = 0;
-
   while (a < studentCount && inFile >> student[a].studentID >>
                                  student[a].name >> student[a].course >>
                                  student[a].yearLevel >>
@@ -119,6 +118,7 @@ void sortFile(std::string fileName) {
             << student[i].finalGrade << '\n';
   }
 }
+
 void searchByStudent(std::string fileName) {
   std::ifstream inFile(fileName);
 
@@ -152,6 +152,7 @@ void searchByStudent(std::string fileName) {
     }
   }
 }
+
 void updateRecord(std::string fileName) {
   std::ifstream inFile(fileName);
 
