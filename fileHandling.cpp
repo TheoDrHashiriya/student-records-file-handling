@@ -69,6 +69,11 @@ void sortFile(string fileName) {
 	
 	ifstream inFile(fileName);
 	
+	if(!inFile.is_open()) {
+		cout << "ERROR: error opening file\n";
+		return;
+	}
+	
 	Student student[studentCount];
 	
 	vector <string> lines;
@@ -98,6 +103,11 @@ void sortFile(string fileName) {
 }	
 void searchByStudent(string fileName)  {
 	ifstream inFile(fileName);
+	
+	if(!inFile.is_open()) {
+		cout << "ERROR: error opening file\n";
+		return;
+	}
 	
 	Student student[studentCount];
 	
@@ -151,11 +161,35 @@ void updateRecord(string fileName) {
     
     //rewrite exisiting record data
     ofstream outFile(fileName);
+    
+    if(!outFile.is_open()) {
+		cout << "ERROR: File not found.\n";
+		return;
+	}
+	
 	for(int i = 0; i < studentCount; i++) {
 		outFile << student[i].studentID << " " << student[i].name << " " << student[i].course << " " << student[i].yearLevel << " " << student[i].finalGrade << endl;
 	}
 	
 	
+}
+
+int mainMenu() {
+	
+	int choice;
+	
+	cout << "\n--Student Management System\n"
+	     << "with file handling!\n"
+	     << endl
+	     << "[1] Add student\n"
+	     << "[2] View all Records\n"
+	     << "[3] Search a student record By ID\n"
+	     << "[4] Update a record\n"
+	     << "[5] Exit\n"
+	     << "Enter Choice: ";
+	     cin >> choice;
+	     
+	return choice;
 }
 int main() {
 
@@ -163,15 +197,28 @@ int main() {
 	
 	cout << "Please Specify Name of file the file to open \n FILENAME: ";
 	getline(cin, fileName);
-
 	
+	bool running = true;
+	do {
+		int opt = mainMenu();
+	
+		switch(opt) {
+			case 1: addStudent(fileName); break;
+			
+			case 2: viewAllRecords(fileName); break;
+			
+			case 3: searchByStudent(fileName); break;
+			
+			case 4: updateRecord(fileName); break;
+			
+			case 5: running = false; break;
+			
+			default: cout << "Invalid Input.\n"; continue;
+		}
 		
-	addStudent(fileName);
-	updateRecord(fileName);
-	sortFile(fileName);
-	viewAllRecords(fileName);
+	} while(running);
 	
-	cout << "Success: File created.\n";
+	cout << "Success: Thank You using my program.\n";
 
 	
 	return 0;
