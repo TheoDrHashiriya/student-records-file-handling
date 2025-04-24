@@ -18,7 +18,8 @@ int main() {
                "2. View all records\n"
                "3. Search a record by Student ID\n"
                "4. Update a record\n"
-               "5. Exit\n"
+               "5. Delete a record\n"
+               "6. Exit\n"
                "Enter option: ";
 
   bool isValid = false;
@@ -32,8 +33,8 @@ int main() {
       continue;
     }
 
-    if (option < 1 || option > 5) {
-      std::cout << "Option should be between 1 and 5! Try again: ";
+    if (option < 1 || option > 6) {
+      std::cout << "Option should be between 1 and 6! Try again: ";
       continue;
     } else {
       isValid = true;
