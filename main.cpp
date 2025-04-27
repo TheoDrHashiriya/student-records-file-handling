@@ -3,7 +3,6 @@
 #include <iostream>
 #include <limits>
 
-
 const int MAX_STUDENTS = 1000;
 
 struct Student {
